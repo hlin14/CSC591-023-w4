@@ -2,7 +2,7 @@ from testEngine import O
 from sample import sample
 
 class num:
-	def __init__(self, maxNumber, listNumbers):
+	def __init__(self, maxNumber = 1):
 		self.n = 0
 		self.mu = 0
 		self.m2 = 0
@@ -10,8 +10,12 @@ class num:
 		self.hi = -10 ^ 32
 		self.sd = 0
 		self.same = sample(maxNumber)
+
+	def nums(self, listNumbers):
+		n = num(len(listNumbers))
 		for x in listNumbers:
-			self.numInc(x)
+			n.numInc(x)			
+		return n
 
 	def numInc(self, x):
 		if x is None:
@@ -49,7 +53,8 @@ class num:
 def testing():
 	num_list = [4,10,15,38,54,57,62,83,100,100,174,190,215,225,233,250,
 		260,270,299,300,306,333,350,375,443,475,525,583,780,1000]
-	n = num(len(num_list), num_list)
+	n = num()
+	n = n.nums(num_list)
 	assert n.mu == 270.3 and round(n.sd, 3) == 231.946 
 	
 if __name__== "__main__":
